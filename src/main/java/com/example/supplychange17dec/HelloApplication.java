@@ -1,6 +1,9 @@
 package com.example.supplychange17dec;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.WeakEventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -40,8 +43,22 @@ public class HelloApplication extends Application {
         Label emailLabel = new Label("Email");
         Label passwordLabel = new Label("Password");
 
+        Label messageLabel = new Label("I AM MESSAGE");
+
         TextField emailTextField = new TextField();
         PasswordField passwordField = new PasswordField();
+
+
+        Button loginButton = new Button("Login");
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String email = emailTextField.getText();
+                String password = passwordField.getText();
+                messageLabel.setText(email+"$$"+password);
+
+            }
+        });
 
         GridPane gridPane = new GridPane();
         gridPane.setMinSize(bodyPane.getMinWidth(), bodyPane.getMinHeight());
@@ -54,6 +71,8 @@ public class HelloApplication extends Application {
         gridPane.add(emailTextField,1,0);
         gridPane.add(passwordLabel,0,1);
         gridPane.add(passwordField,1,1);
+        gridPane.add(loginButton,0,2);
+        gridPane.add(messageLabel,1,2);
 
         return gridPane;
 
