@@ -2,6 +2,7 @@ package com.example.supplychange17dec;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,6 +25,12 @@ public class HelloApplication extends Application {
         Button searchButton = new Button("Search");
 
         GridPane gridPane = new GridPane();
+
+        gridPane.setMinSize(bodyPane.getMinWidth(), bodyPane.getMinHeight());
+        gridPane.setVgap(5);
+        gridPane.setHgap(5);
+        gridPane.setAlignment(Pos.TOP_CENTER);
+
         gridPane.add(searchText,0,0);
         gridPane.add(searchButton,1,0);
         return gridPane;
@@ -37,6 +44,11 @@ public class HelloApplication extends Application {
         PasswordField passwordField = new PasswordField();
 
         GridPane gridPane = new GridPane();
+        gridPane.setMinSize(bodyPane.getMinWidth(), bodyPane.getMinHeight());
+        gridPane.setVgap(5);
+        gridPane.setHgap(5);
+
+        gridPane.setAlignment(Pos.CENTER);
 
         gridPane.add(emailLabel,0,0);
         gridPane.add(emailTextField,1,0);
@@ -55,7 +67,7 @@ public class HelloApplication extends Application {
         bodyPane.setMinSize(width,height);
         bodyPane.setTranslateY(headerBar);
 
-        bodyPane.getChildren().addAll(loginPage());
+        bodyPane.getChildren().addAll(loginPage()); // first will be login page then body pane
 
         root.getChildren().addAll(headerBar(),bodyPane);
 
